@@ -58,8 +58,8 @@ while K~=4 % arr�ter
          hold on              % tous les plot seront executes sur cette meme fenetre
          axis([0 10 0 10])    % les axes sont definitivement fixes
          %axis off
-	 for k=1:n 
-	   plot(matrice(1,k), matrice(2,k),'o') % affichage du point de controle k
+         for k=1:n 
+             plot(matrice(1,k), matrice(2,k),'o') % affichage du point de controle k
          end
          plot(matrice(1,:),matrice(2,:),'b') % affichage du polygone de controle
          Bezier_curve_points = eval_deCasteljau(matrice,a,b,resolution) ;

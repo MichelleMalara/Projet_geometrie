@@ -1,7 +1,7 @@
 function []= Courbe_de_spline()
 
 resolution=21;       % nombre de points evalues sur la courbe de Bezier
-c= 0.5;
+c= 0;
 K=0;                 % variable d'etat
 matrice=0;           % ensemble des points de controle
 
@@ -41,8 +41,8 @@ while K~=4 % arr�ter
          if size(matrice,2)==1
             break
          end
- 
-         matrice=supprimer_point(matrice,X,Y);
+         i_mem=indice_supression(matrice,X,Y);
+         matrice=s
          n=size(matrice,2);
          clf                  % affichage d'une fenetre vide
          hold on              % tous les plot seront executes sur cette meme fenetre
@@ -52,17 +52,6 @@ while K~=4 % arr�ter
             plot(matrice(1,k), matrice(2,k),'o') % affichage du point de controle k
          end
          plot(matrice(1,:),matrice(2,:),'b') % affichage du polygone de controle
-         n = n-1;
-         l = 1;
-         while l <= n 
-            p0 = [matrice(1,l), matrice(2,l)];
-            p1 = [matrice(1,l+1), matrice(2,l+1)];
-            m0 = calc_vect(matrice, n, l, c);
-            m1 = calc_vect(matrice, n, l+1, c);
-            bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-            plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
-            l = l+1;
-         end
          [X,Y]=ginput(1);
      end
    end

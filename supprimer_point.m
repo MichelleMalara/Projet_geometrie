@@ -1,4 +1,4 @@
-function [ matrice2 ] = supprimer_point(matrice,X,Y)
+function [ matrice2 ] = supprimer_point(matrice, X, Y)
 
 n=size(matrice,2);
 min=sqrt((matrice(1,1)-X)^2+(matrice(2,1)-Y)^2);
@@ -10,8 +10,8 @@ for i=2:n
       min=a;
       i_mem=i;
    end
-end % renvoie le numéro du point le plus proche de (X,Y)
-
+end % renvoie le numï¿½ro du point le plus proche de (X,Y)
+n=size(matrice,2);
 for i=1:i_mem-1
    matrice2(1,i)=matrice(1,i);
    matrice2(2,i)=matrice(2,i);
