@@ -1,6 +1,6 @@
 function []= Courbe_de_spline()
 
-resolution=21;       % nombre de points evalues sur la courbe de Bezier
+resolution=1000;       % nombre de points evalues sur la courbe de Bezier
 c= 0;
 K=0;                 % variable d'etat
 matrice=0;           % ensemble des points de controle
@@ -426,12 +426,9 @@ while K~=7 % arr�ter
        for k=1:n+1 
           plot(matrice(1,k), matrice(2,k),'o') % affichage du point de controle k
        end
-       plot(matrice(1,:),matrice(2,:),'b') % affichage du polygone de controle
          
        if n>0
-          quiver(matrice(1,1), matrice(2,1), mzero(1), mzero(2));
-          quiver(matrice(1,n+1), matrice(2,n+1), mn(1), mn(2));
-         
+           
           l = 1;
             
           if n>=2
@@ -443,24 +440,24 @@ while K~=7 % arr�ter
               plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
               
-              xprim = (bezier_curve_points(1, 2) - bezier_curve_points(1,1))*20;
-              yprim = (bezier_curve_points(2, 2) - bezier_curve_points(2,1))*20;
-              xsec = (bezier_curve_points(1, 3) - 2*bezier_curve_points(1,2) + bezier_curve_points(1,1))*400;
-              ysec = (bezier_curve_points(2, 3) - 2*bezier_curve_points(2,2) + bezier_curve_points(2,1))*400;
+              xprim = (bezier_curve_points(1, 2) - bezier_curve_points(1,1))*(resolution - 1);
+              yprim = (bezier_curve_points(2, 2) - bezier_curve_points(2,1))*(resolution - 1);
+              xsec = (bezier_curve_points(1, 3) - 2*bezier_curve_points(1,2) + bezier_curve_points(1,1))*(resolution - 1)^2;
+              ysec = (bezier_curve_points(2, 3) - 2*bezier_curve_points(2,2) + bezier_curve_points(2,1))*(resolution - 1)^2;
               focale(1,1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
               focale(2,1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
-              for elt=2:20
-                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*10;
-                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*10;
-                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*400;
-                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*400;
+              for elt=2:(resolution - 1)
+                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*(resolution - 1)/2;
+                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*(resolution - 1)/2;
+                  xsec =  (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*(resolution - 1)^2;
+                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*(resolution - 1)^2;
                   focale(1,elt) = bezier_curve_points(1,elt) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
                   focale(2,elt) = bezier_curve_points(2,elt) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
               end
-              xprim = -10*bezier_curve_points(1, 20);
-              yprim = -10*bezier_curve_points(2, 20);
-              xsec = -800*bezier_curve_points(1, 21) + 400*bezier_curve_points(1, 20);
-              ysec = -800*bezier_curve_points(2, 21) + 400*bezier_curve_points(2, 20);
+              xprim = -(resolution - 1)*bezier_curve_points(1, resolution -1)/2;
+              yprim = -(resolution - 1)*bezier_curve_points(2, resolution - 1)/2;
+              xsec = -2*(resolution - 1)^2*bezier_curve_points(1, resolution) + (resolution - 1)^2*bezier_curve_points(1, resolution - 1);
+              ysec = -2*(resolution - 1)^2*bezier_curve_points(2, resolution) + (resolution - 1)^2*bezier_curve_points(2, resolution - 1);
           elseif n==1
               p0 = [matrice(1,l), matrice(2,l)];
               p1 = [matrice(1,l+1), matrice(2,l+1)];
@@ -470,22 +467,22 @@ while K~=7 % arr�ter
               plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
               
-              xprim = (bezier_curve_points(1, 2) - bezier_curve_points(1,1))*20;
-              yprim = (bezier_curve_points(2, 2) - bezier_curve_points(2,1))*20;
-              xsec = (bezier_curve_points(1, 3) - 2*bezier_curve_points(1,2) + bezier_curve_points(1,1))*400;
-              ysec = (bezier_curve_points(2, 3) - 2*bezier_curve_points(2,2) + bezier_curve_points(2,1))*400;
+              xprim = (bezier_curve_points(1, 2) - bezier_curve_points(1,1))*(resolution - 1);
+              yprim = (bezier_curve_points(2, 2) - bezier_curve_points(2,1))*(resolution - 1);
+              xsec = (bezier_curve_points(1, 3) - 2*bezier_curve_points(1,2) + bezier_curve_points(1,1))*(resolution - 1)^2;
+              ysec = (bezier_curve_points(2, 3) - 2*bezier_curve_points(2,2) + bezier_curve_points(2,1))*(resolution - 1)^2;
               focale(1,1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
               focale(2,1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
-              for elt=2:20
-                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*10;
-                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*10;
-                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*400;
-                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*400;
+              for elt=2:(resolution - 1)
+                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*(resolution - 1)/2;
+                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*(resolution - 1)/2;
+                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*(resolution - 1)^2;
+                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*(resolution - 1)^2;
                   focale(1,elt) = bezier_curve_points(1,elt) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
                   focale(2,elt) = bezier_curve_points(2,elt) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
               end
-              xprim = 20*(bezier_curve_points(1, 21)- bezier_curve_points(1, 20));
-              yprim = 20*(bezier_curve_points(2, 21) - bezier_curve_points(2, 20));
+              xprim = (resolution - 1)*(bezier_curve_points(1, 21)- bezier_curve_points(1, 20));
+              yprim = (resolution - 1)*(bezier_curve_points(2, 21) - bezier_curve_points(2, 20));
             
           end
           while l <= n-1 
@@ -496,30 +493,30 @@ while K~=7 % arr�ter
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);                       
               plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               
-              xprim = xprim + bezier_curve_points(1,2)*10;
-              yprim = yprim + bezier_curve_points(2,2)*10;
-              xsec = xsec + bezier_curve_points(1,2)*400;
-              ysec = ysec + bezier_curve_points(2,2)*400;
-              focale(1,20*(l-1) + 1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
-              focale(2, 20*(l-1) + 1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              xprim = xprim + bezier_curve_points(1,2)*(resolution -1)/2;
+              yprim = yprim + bezier_curve_points(2,2)*(resolution - 1)/2;
+              xsec = xsec + bezier_curve_points(1,2)*(resolution - 1)^2;
+              ysec = ysec + bezier_curve_points(2,2)*(resolution - 1)^2;
+              focale(1,(resolution- 1)*(l-1) + 1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+              focale(2, (resolution - 1)*(l-1) + 1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
               
-              for elt=2:20
-                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*10;
-                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*10;
-                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*400;
-                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*400;
-                  focale(1,20*(l-1) + elt) = bezier_curve_points(1,elt) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
-                  focale(2,20*(l-1) + elt) = bezier_curve_points(2,elt) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              for elt=2:(resolution - 1)
+                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*(resolution - 1)/2;
+                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*(resolution - 1)/2;
+                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*(resolution - 1)^2;
+                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*(resolution - 1)^2;
+                  focale(1,(resolution - 1)*(l-1) + elt) = bezier_curve_points(1,elt) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+                  focale(2,(resolution - 1)*(l-1) + elt) = bezier_curve_points(2,elt) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
               end
-              xprim = -10*bezier_curve_points(1, 20);
-              yprim = -10*bezier_curve_points(2, 20);
-              xsec = -800*bezier_curve_points(1, 21) + 400*bezier_curve_points(1, 20);
-              ysec = -800*bezier_curve_points(2, 21) + 400*bezier_curve_points(2, 20);
+              xprim = -(resolution - 1)*bezier_curve_points(1, resolution - 1)/2;
+              yprim = -(resolution - 1)*bezier_curve_points(2, resolution - 1)/2;
+              xsec = (-2*bezier_curve_points(1, resolution) + bezier_curve_points(1, resolution - 1))*(resolution - 1)^2;
+              ysec = (-2*bezier_curve_points(2, resolution) + bezier_curve_points(2, resolution - 1))*(resolution - 1)^2;
             
               l = l+1;
           end
      
-          if l==n
+          if n>=2
               
               p0 = [matrice(1,l), matrice(2,l)];
               p1 = [matrice(1,l+1), matrice(2,l+1)];
@@ -528,30 +525,31 @@ while K~=7 % arr�ter
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
               plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
              
-              xprim = xprim + bezier_curve_points(1,2)*10;
-              yprim = yprim + bezier_curve_points(2,2)*10;
-              xsec = xsec + bezier_curve_points(1,2)*400;
-              ysec = ysec + bezier_curve_points(2,2)*400;
-              focale(1,20*(l-1) + 1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
-              focale(2, 20*(l-1) + 1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              xprim = xprim + bezier_curve_points(1,2)*(resolution - 1)/2;
+              yprim = yprim + bezier_curve_points(2,2)*(resolution - 1)/2;
+              xsec = xsec + bezier_curve_points(1,2)*(resolution - 1)^2;
+              ysec = ysec + bezier_curve_points(2,2)*(resolution - 1)^2;
+              focale(1,(resolution - 1)*(l-1) + 1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+              focale(2, (resolution - 1)*(l-1) + 1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
               
-              for elt=2:20
-                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*10;
-                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*10;
-                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*400;
-                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*400;
-                  focale(1,20*(l-1) + elt) = bezier_curve_points(1,elt) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
-                  focale(2,20*(l-1) + elt) = bezier_curve_points(2,elt) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              for elt=2:(resolution - 1)
+                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*25;
+                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*25;
+                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*2500;
+                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*2500;
+                  focale(1,(resolution - 1)*(l-1) + elt) = bezier_curve_points(1,elt) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+                  focale(2,(resolution - 1)*(l-1) + elt) = bezier_curve_points(2,elt) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
               end
               
-              xprim = 20*(bezier_curve_points(1, 21)- bezier_curve_points(1, 20));
-              yprim = 20*(bezier_curve_points(2, 21) - bezier_curve_points(2, 20));
-              focale(1,20*l + 1) = bezier_curve_points(1,21) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
-              focale(2,20*l + 1) = bezier_curve_points(2,21) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              xprim = (resolution - 1)*(bezier_curve_points(1, resolution)- bezier_curve_points(1, resolution - 1));
+              yprim = (resolution - 1)*(bezier_curve_points(2, resolution) - bezier_curve_points(2, resolution - 1));
           end
           
-          
-          plot(focale(1,:), focale(2,:), 'g', 'linewidth', 1);
+          if n>=1
+              focale(1,(resolution - 1)*n + 1) = bezier_curve_points(1,resolution) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+              focale(2,(resolution - 1)*n + 1) = bezier_curve_points(2,resolution) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              plot(focale(1,:), focale(2,:), 'g', 'linewidth', 1);
+          end
        end   
    end
 end
