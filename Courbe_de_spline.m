@@ -62,7 +62,7 @@ while K~=7 % arr�ter
         m0 = mzero;
         m1 = calc_vect(matrice, n, l+1, c);
         bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-        plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+        plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
         l = l+1;
         
       elseif n==1
@@ -71,7 +71,7 @@ while K~=7 % arr�ter
         m0 = mzero;
         m1 = mn;
         bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-        plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+        plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
         l = l+1;
           
       end
@@ -81,7 +81,7 @@ while K~=7 % arr�ter
           m0 = calc_vect(matrice, n, l, c);
           m1 = calc_vect(matrice, n, l+1, c);
           bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-          plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+          plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
           l = l+1;
       end
       
@@ -91,7 +91,7 @@ while K~=7 % arr�ter
         m0 = calc_vect(matrice, n, l, c);
         m1 = mn;
         bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-        plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+        plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
       end
    elseif K==2 %modifier les tangentes
        
@@ -123,7 +123,7 @@ while K~=7 % arr�ter
               m0 = mzero;
               m1 = calc_vect(matrice, n, l+1, c);
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           elseif n==1
               p0 = [matrice(1,l), matrice(2,l)];
@@ -131,7 +131,7 @@ while K~=7 % arr�ter
               m0 = mzero;
               m1 = mn;
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           end
           while l <= n-1 
@@ -140,7 +140,7 @@ while K~=7 % arr�ter
               m0 = calc_vect(matrice, n, l, c);
               m1 = calc_vect(matrice, n, l+1, c);
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           end
      
@@ -150,7 +150,7 @@ while K~=7 % arr�ter
               m0 = calc_vect(matrice, n, l, c);
               m1 = mn;
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
           end
        end
        
@@ -188,7 +188,7 @@ while K~=7 % arr�ter
                 m0 = mzero;
                 m1 = calc_vect(matrice, n, l+1, c);
                 bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
                 l = l+1;
             elseif n==1
                 p0 = [matrice(1,l), matrice(2,l)];
@@ -196,7 +196,7 @@ while K~=7 % arr�ter
                 m0 = mzero;
                 m1 = mn;
                 bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
                 l = l+1;
             end
             while l <= n-1 
@@ -205,7 +205,7 @@ while K~=7 % arr�ter
                 m0 = calc_vect(matrice, n, l, c);
                 m1 = calc_vect(matrice, n, l+1, c);
                 bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
                 l = l+1;
             end
             
@@ -215,7 +215,7 @@ while K~=7 % arr�ter
                 m0 = calc_vect(matrice, n, l, c);
                 m1 = mn;
                 bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
             end
             
             [X,Y]=ginput(1);
@@ -252,7 +252,7 @@ while K~=7 % arr�ter
               m0 = mzero;
               m1 = calc_vect(matrice, n, l+1, c);
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           elseif n==1
               p0 = [matrice(1,l), matrice(2,l)];
@@ -260,7 +260,7 @@ while K~=7 % arr�ter
               m0 = mzero;
               m1 = mn;
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           end
           while l <= n-1 
@@ -269,7 +269,7 @@ while K~=7 % arr�ter
               m0 = calc_vect(matrice, n, l, c);
               m1 = calc_vect(matrice, n, l+1, c);
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           end
      
@@ -279,7 +279,7 @@ while K~=7 % arr�ter
               m0 = calc_vect(matrice, n, l, c);
               m1 = mn;
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
           end
        end      
          
@@ -321,7 +321,7 @@ while K~=7 % arr�ter
                 m0 = mzero;
                 m1 = calc_vect(matrice, n, l+1, c);
                 bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
                 l = l+1;
             elseif n==1
                 p0 = [matrice(1,l), matrice(2,l)];
@@ -329,7 +329,7 @@ while K~=7 % arr�ter
                 m0 = mzero;
                 m1 = mn;
                 bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
                 l = l+1;
             end
             while l <= n-1 
@@ -338,7 +338,7 @@ while K~=7 % arr�ter
                 m0 = calc_vect(matrice, n, l, c);
                 m1 = calc_vect(matrice, n, l+1, c);
                 bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
                 l = l+1;
             end
             
@@ -348,7 +348,7 @@ while K~=7 % arr�ter
                 m0 = calc_vect(matrice, n, l, c);
                 m1 = mn;
                 bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+                plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
             end
             
             [X,Y]=ginput(1);
@@ -384,7 +384,7 @@ while K~=7 % arr�ter
               m0 = mzero;
               m1 = calc_vect(matrice, n, l+1, c);
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           elseif n==1
               p0 = [matrice(1,l), matrice(2,l)];
@@ -392,7 +392,7 @@ while K~=7 % arr�ter
               m0 = mzero;
               m1 = mn;
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           end
           while l <= n-1 
@@ -401,7 +401,7 @@ while K~=7 % arr�ter
               m0 = calc_vect(matrice, n, l, c);
               m1 = calc_vect(matrice, n, l+1, c);
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
           end
      
@@ -411,7 +411,7 @@ while K~=7 % arr�ter
               m0 = calc_vect(matrice, n, l, c);
               m1 = mn;
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
           end
        end 
        
@@ -440,7 +440,7 @@ while K~=7 % arr�ter
               m0 = mzero;
               m1 = calc_vect(matrice, n, l+1, c);
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
               
               xprim = (bezier_curve_points(1, 2) - bezier_curve_points(1,1))*20;
@@ -467,7 +467,7 @@ while K~=7 % arr�ter
               m0 = mzero;
               m1 = mn;
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               l = l+1;
               
               xprim = (bezier_curve_points(1, 2) - bezier_curve_points(1,1))*20;
@@ -494,28 +494,64 @@ while K~=7 % arr�ter
               m0 = calc_vect(matrice, n, l, c);
               m1 = calc_vect(matrice, n, l+1, c);
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);                       
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
               
               xprim = xprim + bezier_curve_points(1,2)*10;
               yprim = yprim + bezier_curve_points(2,2)*10;
               xsec = xsec + bezier_curve_points(1,2)*400;
               ysec = ysec + bezier_curve_points(2,2)*400;
-              focale(1,10*l + 1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
-              focale(2,10*l + 1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
-              %  a FINIR !!!!!!!
+              focale(1,20*(l-1) + 1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+              focale(2, 20*(l-1) + 1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
               
+              for elt=2:20
+                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*10;
+                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*10;
+                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*400;
+                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*400;
+                  focale(1,20*(l-1) + elt) = bezier_curve_points(1,elt) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+                  focale(2,20*(l-1) + elt) = bezier_curve_points(2,elt) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              end
+              xprim = -10*bezier_curve_points(1, 20);
+              yprim = -10*bezier_curve_points(2, 20);
+              xsec = -800*bezier_curve_points(1, 21) + 400*bezier_curve_points(1, 20);
+              ysec = -800*bezier_curve_points(2, 21) + 400*bezier_curve_points(2, 20);
             
               l = l+1;
           end
      
           if l==n
+              
               p0 = [matrice(1,l), matrice(2,l)];
               p1 = [matrice(1,l+1), matrice(2,l+1)];
               m0 = calc_vect(matrice, n, l, c);
               m1 = mn;
               bezier_curve_points = eval_deCasteljau_2point(p0, p1, m0, m1, resolution);
-              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 2);
+              plot(bezier_curve_points(1,:),bezier_curve_points(2,:),'r', 'linewidth', 1);
+             
+              xprim = xprim + bezier_curve_points(1,2)*10;
+              yprim = yprim + bezier_curve_points(2,2)*10;
+              xsec = xsec + bezier_curve_points(1,2)*400;
+              ysec = ysec + bezier_curve_points(2,2)*400;
+              focale(1,20*(l-1) + 1) = bezier_curve_points(1,1) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+              focale(2, 20*(l-1) + 1) = bezier_curve_points(2,1) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              
+              for elt=2:20
+                  xprim = (bezier_curve_points(1, elt+1) - bezier_curve_points(1,elt-1))*10;
+                  yprim = (bezier_curve_points(2, elt+1) - bezier_curve_points(2,elt-1))*10;
+                  xsec = (bezier_curve_points(1, elt+1) - 2*bezier_curve_points(1,elt) + bezier_curve_points(1,elt-1))*400;
+                  ysec = (bezier_curve_points(2, elt+1) - 2*bezier_curve_points(2,elt) + bezier_curve_points(2,elt-1))*400;
+                  focale(1,20*(l-1) + elt) = bezier_curve_points(1,elt) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+                  focale(2,20*(l-1) + elt) = bezier_curve_points(2,elt) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
+              end
+              
+              xprim = 20*(bezier_curve_points(1, 21)- bezier_curve_points(1, 20));
+              yprim = 20*(bezier_curve_points(2, 21) - bezier_curve_points(2, 20));
+              focale(1,20*l + 1) = bezier_curve_points(1,21) + alpha * (xsec * yprim - xprim * ysec)*yprim/((xprim^2 + yprim^2)^2);  
+              focale(2,20*l + 1) = bezier_curve_points(2,21) + alpha * (xprim * ysec - xsec * yprim)*xprim/((xprim^2 + yprim^2)^2);
           end
+          
+          
+          plot(focale(1,:), focale(2,:), 'g', 'linewidth', 1);
        end   
    end
 end
